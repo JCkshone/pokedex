@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="KGk-i7-Jjw" customClass="ItemTableViewCell" customModule="Pokedex" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="75"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="323" height="75"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vod-oB-0xE">
+                        <rect key="frame" x="16" y="17.5" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Zul-jY-akL"/>
+                            <constraint firstAttribute="width" constant="40" id="pX8-pF-3Md"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Master Ball" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQF-MZ-jny">
+                        <rect key="frame" x="64" y="24.5" width="96.5" height="26"/>
+                        <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="19"/>
+                        <color key="textColor" red="0.30980392156862746" green="0.30980392156862746" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_currency" translatesAutoresizingMaskIntoConstraints="NO" id="8GF-bW-zw4">
+                        <rect key="frame" x="296" y="30" width="11" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="04R-pm-nC1"/>
+                            <constraint firstAttribute="width" constant="11" id="hFX-r2-Hso"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIC-ZH-IWJ">
+                        <rect key="frame" x="252" y="26" width="38" height="23.5"/>
+                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                        <color key="textColor" red="0.64313725490196072" green="0.64313725490196072" blue="0.64313725490196072" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="JQF-MZ-jny" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2Tp-hn-uH3"/>
+                    <constraint firstItem="8GF-bW-zw4" firstAttribute="leading" secondItem="jIC-ZH-IWJ" secondAttribute="trailing" constant="6" id="2yq-WG-vgS"/>
+                    <constraint firstItem="Vod-oB-0xE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FSl-PL-D5A"/>
+                    <constraint firstItem="JQF-MZ-jny" firstAttribute="leading" secondItem="Vod-oB-0xE" secondAttribute="trailing" constant="8" symbolic="YES" id="gKl-2n-5mQ"/>
+                    <constraint firstAttribute="trailing" secondItem="8GF-bW-zw4" secondAttribute="trailing" constant="16" id="k1K-ZO-tUJ"/>
+                    <constraint firstItem="8GF-bW-zw4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ma4-fh-wHt"/>
+                    <constraint firstItem="jIC-ZH-IWJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uEG-X8-Ydy"/>
+                    <constraint firstItem="Vod-oB-0xE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="uVO-8v-mck"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="currencyItem" destination="jIC-ZH-IWJ" id="ma5-DQ-dZJ"/>
+                <outlet property="itemImage" destination="Vod-oB-0xE" id="Gs5-Xo-sLe"/>
+                <outlet property="itemName" destination="JQF-MZ-jny" id="cZ4-ME-yGQ"/>
+            </connections>
+            <point key="canvasLocation" x="139.85507246376812" y="98.772321428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_currency" width="9" height="16"/>
+    </resources>
+</document>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationView" customModule="Pokedex" customModuleProvider="target">
+            <connections>
+                <outlet property="searchTextField" destination="xlY-SA-xqc" id="m0O-Nv-a7l"/>
+                <outlet property="title" destination="OSF-Kb-fmt" id="scV-ti-hrL"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="470" height="188"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pokemon " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSF-Kb-fmt">
+                    <rect key="frame" x="16" y="65" width="438" height="34.5"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="25"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search" textAlignment="natural" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="xlY-SA-xqc">
+                    <rect key="frame" x="16" y="116.5" width="438" height="55.5"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadies">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </textField>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="gRs-YW-BNV">
+                    <rect key="frame" x="32" y="131.5" width="20" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="MzX-bD-eon"/>
+                        <constraint firstAttribute="height" constant="16" id="nA0-Ez-tlA"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzu-78-Ie8">
+                    <rect key="frame" x="420" y="129.5" width="14" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="14" id="Fmp-kz-HK8"/>
+                        <constraint firstAttribute="height" constant="22" id="kfo-TM-eMD"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="ic_microphone"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="0.7303617294520548" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="tzu-78-Ie8" secondAttribute="trailing" constant="36" id="3f3-RM-KJO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xlY-SA-xqc" secondAttribute="trailing" constant="16" id="KiE-y6-5uD"/>
+                <constraint firstItem="gRs-YW-BNV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="TTB-dJ-tRT"/>
+                <constraint firstItem="xlY-SA-xqc" firstAttribute="top" secondItem="OSF-Kb-fmt" secondAttribute="bottom" constant="17" id="VT4-tF-pmY"/>
+                <constraint firstAttribute="bottom" secondItem="xlY-SA-xqc" secondAttribute="bottom" constant="16" id="X6A-jQ-hIo"/>
+                <constraint firstItem="OSF-Kb-fmt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="dAd-N0-spv"/>
+                <constraint firstItem="gRs-YW-BNV" firstAttribute="top" secondItem="OSF-Kb-fmt" secondAttribute="bottom" constant="32" id="fjj-tB-vtd"/>
+                <constraint firstItem="OSF-Kb-fmt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="grj-MY-1QP"/>
+                <constraint firstItem="tzu-78-Ie8" firstAttribute="top" secondItem="OSF-Kb-fmt" secondAttribute="bottom" constant="30" id="huB-pK-j7H"/>
+                <constraint firstItem="xlY-SA-xqc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="qmu-JL-pvp"/>
+                <constraint firstAttribute="trailing" secondItem="OSF-Kb-fmt" secondAttribute="trailing" constant="16" id="x3P-ny-fod"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="178.2608695652174" y="-116.51785714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_microphone" width="12" height="19"/>
+        <image name="ic_search" width="14" height="14"/>
+    </resources>
+</document>
