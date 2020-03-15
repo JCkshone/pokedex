@@ -49,4 +49,11 @@ extension UIView {
             parentView.frame.height - borderWidth, width: parentView.frame.size.width, height: borderWidth)
         parentView.addSubview(border.setGeneralGradient())
     }
+    
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
 }

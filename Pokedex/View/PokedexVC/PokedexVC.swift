@@ -83,16 +83,19 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else {
             return
         }
+        let pokemon = pokemonDetail
         
-        let redView = pokemonDetail.view!
+        let redView = pokemon.view!
         redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveView)))
+        
         view.addSubview(redView)
         self.startingFrame = startingFrame
-        
+        addChild(pokemon)
         redView.frame = startingFrame
         redView.layer.cornerRadius = 16
+        pokemonDetail.willMove(toParent: self)
+        pokemonDetail.didMove(toParent: self)
         
-        addChild(pokemonDetail)
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             redView.frame = self.view.frame

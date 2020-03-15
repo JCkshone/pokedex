@@ -116,24 +116,18 @@
                                 <state key="normal" backgroundImage="chevron.down" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismissAction:" destination="eyf-IY-mck" eventType="touchUpInside" id="HAt-s5-DKb"/>
+                                </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sw-iY-hSU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jnG-OZ-TH1">
                                 <rect key="frame" x="0.0" y="222" width="414" height="674"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Squirtel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2R-rj-rve">
-                                        <rect key="frame" x="20" y="57" width="374" height="55"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="40"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="T2R-rj-rve" firstAttribute="top" secondItem="7sw-iY-hSU" secondAttribute="top" constant="57" id="2se-Vx-rCl"/>
-                                    <constraint firstItem="T2R-rj-rve" firstAttribute="leading" secondItem="7sw-iY-hSU" secondAttribute="leading" constant="20" id="UoG-ov-JxI"/>
-                                    <constraint firstAttribute="trailing" secondItem="T2R-rj-rve" secondAttribute="trailing" constant="20" id="u05-vj-vjh"/>
-                                </constraints>
-                            </view>
+                                <connections>
+                                    <outlet property="dataSource" destination="eyf-IY-mck" id="aWN-Fd-Q9I"/>
+                                    <outlet property="delegate" destination="eyf-IY-mck" id="fhY-HA-Isq"/>
+                                </connections>
+                            </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="squirtle" translatesAutoresizingMaskIntoConstraints="NO" id="qjs-nR-NgY">
                                 <rect key="frame" x="122" y="88" width="170" height="170"/>
                                 <constraints>
@@ -145,16 +139,20 @@
                         <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="qjs-nR-NgY" firstAttribute="centerX" secondItem="tHv-4a-iXb" secondAttribute="centerX" id="2gp-Fh-vJd"/>
+                            <constraint firstItem="tHv-4a-iXb" firstAttribute="trailing" secondItem="jnG-OZ-TH1" secondAttribute="trailing" id="BhW-s6-M9c"/>
                             <constraint firstItem="qjs-nR-NgY" firstAttribute="top" secondItem="tHv-4a-iXb" secondAttribute="top" constant="44" id="Bve-LJ-wlE"/>
-                            <constraint firstAttribute="bottom" secondItem="7sw-iY-hSU" secondAttribute="bottom" id="T3V-Y9-kNN"/>
                             <constraint firstItem="pSR-5c-Qdr" firstAttribute="leading" secondItem="tHv-4a-iXb" secondAttribute="leading" constant="16" id="Tae-KE-bb5"/>
                             <constraint firstItem="pSR-5c-Qdr" firstAttribute="top" secondItem="tHv-4a-iXb" secondAttribute="top" constant="8" id="YHc-bQ-k9P"/>
-                            <constraint firstItem="7sw-iY-hSU" firstAttribute="top" secondItem="tHv-4a-iXb" secondAttribute="top" constant="178" id="dwX-CR-0lW"/>
-                            <constraint firstItem="tHv-4a-iXb" firstAttribute="trailing" secondItem="7sw-iY-hSU" secondAttribute="trailing" id="g2J-HN-9V9"/>
-                            <constraint firstItem="7sw-iY-hSU" firstAttribute="leading" secondItem="tHv-4a-iXb" secondAttribute="leading" id="sgE-uv-WaF"/>
+                            <constraint firstItem="jnG-OZ-TH1" firstAttribute="top" secondItem="tHv-4a-iXb" secondAttribute="top" constant="178" id="iBV-tk-ICu"/>
+                            <constraint firstItem="jnG-OZ-TH1" firstAttribute="leading" secondItem="tHv-4a-iXb" secondAttribute="leading" id="jMw-hK-Sus"/>
+                            <constraint firstAttribute="bottom" secondItem="jnG-OZ-TH1" secondAttribute="bottom" id="quP-dD-ods"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tHv-4a-iXb"/>
                     </view>
+                    <connections>
+                        <outlet property="pokemonImg" destination="qjs-nR-NgY" id="3Am-ED-inQ"/>
+                        <outlet property="tableView" destination="jnG-OZ-TH1" id="DJc-we-8PU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ce7-Hu-dSR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

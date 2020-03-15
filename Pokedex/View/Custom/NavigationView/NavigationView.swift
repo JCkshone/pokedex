@@ -20,7 +20,7 @@ class NavigationView: UIView {
     }
     
     struct Constants {
-        static let nibName = "NavigationView"
+        static let xibName = "NavigationView"
     }
 
     override init(frame: CGRect) {
@@ -37,7 +37,7 @@ class NavigationView: UIView {
 
     func loadViewFromNib() {
         let bundle = Bundle.init(for: NavigationView.self)
-        if let viewsToAdd = bundle.loadNibNamed(Constants.nibName, owner: self, options: nil), let contentView = viewsToAdd.first as? UIView {
+        if let viewsToAdd = bundle.loadNibNamed(Constants.xibName, owner: self, options: nil), let contentView = viewsToAdd.first as? UIView {
             addSubview(contentView)
             contentView.frame = self.bounds
             contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
