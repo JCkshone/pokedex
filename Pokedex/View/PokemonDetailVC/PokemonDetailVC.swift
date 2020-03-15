@@ -7,11 +7,20 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PokemonDetailVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pokemonImg: UIImageView!
+    
+    var pokemon: Pokemon? {
+        didSet {
+            initTableView()
+            setPokemonImg()
+        }
+    }
+    
     typealias headerCell = PokemonInfoTableViewCell
     typealias bodyCell = PokemonStackInfoTableViewCell
     
@@ -24,7 +33,6 @@ class PokemonDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTableView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,11 +44,26 @@ class PokemonDetailVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    func initTableView() {
+    private func initTableView() {
         tableView.roundCorners(corners: [.topLeft, .topRight], radius: 48)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = tableView.bounds.height / 2
         tableView.separatorStyle = .none
+    }
+    
+    func setPokemonImg() {
+        guard let url = URL(string: HttpManager.shareInstance.getImagePokemon(of: pokemon?.id ?? 0)) else {
+            return
+        }
+        let resource = ImageResource(downloadURL: url, cacheKey: url.absoluteString)
+        pokemonImg.kf.setImage(with: resource, placeholder: nil, options: [.transition(.fade(0.2))], progressBlock: nil) { result in
+            switch result{
+            case .success(let value):
+                self.pokemonImg.image = value.image
+            case .failure(let error):
+                print("Error : \(error)")
+            }
+        }
     }
 }
 

@@ -83,24 +83,10 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else {
             return
         }
-        let pokemon = pokemonDetail
         
-        let redView = pokemon.view!
-        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveView)))
-        
-        view.addSubview(redView)
         self.startingFrame = startingFrame
-        addChild(pokemon)
-        redView.frame = startingFrame
-        redView.layer.cornerRadius = 16
-        pokemonDetail.willMove(toParent: self)
-        pokemonDetail.didMove(toParent: self)
         
-        
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            redView.frame = self.view.frame
-            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height+100
-        }, completion: nil)
+        itemSelect(to: viewModel.allPokemons[indexPath.row])
     }
     
     @objc func handleRemoveView(gesture: UITapGestureRecognizer) {
@@ -112,5 +98,30 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         }, completion: { _ in
             gesture.view?.removeFromSuperview()
         })
+    }
+    
+    func itemSelect(to pokemon: Pokemon) {
+        guard let startingFrame = self.startingFrame else {return}
+    
+        let pokemonDetailView = pokemonDetail
+        let contentView = pokemonDetailView.view!
+        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveView)))
+        
+        self.view.addSubview(contentView)
+        
+        contentView.frame = startingFrame
+        contentView.layer.cornerRadius = 16
+        
+        addChild(pokemonDetailView)
+        pokemonDetail.willMove(toParent: self)
+        pokemonDetail.didMove(toParent: self)
+        
+        pokemonDetailView.pokemon = pokemon
+        
+        
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            contentView.frame = self.view.frame
+            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height+100
+        }, completion: nil)
     }
 }

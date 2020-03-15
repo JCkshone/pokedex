@@ -32,7 +32,6 @@ class MoveVM {
     private func getAllPokedexItems() {
         guard let results = pokedex?.results else {return}
         for (_, item) in results.enumerated() {
-            print(item.url)
             http.getPokemonMove(from: item.url) { response in
                 self.items.append(response)
                 if self.itemsCount == self.items.count {

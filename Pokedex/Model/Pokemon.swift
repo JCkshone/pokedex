@@ -9,11 +9,13 @@
 import Foundation
 
 struct Pokemon: Decodable {
+    let id: Int
     let name: String
     let types: [PokemonType]
     let stats: [PokemonStat]
     
     enum CodingKeys: String, CodingKey {
+        case id
         case name
         case types
         case stats
@@ -51,12 +53,12 @@ struct PokemonMove: Decodable {
 }
 
 struct PokemonStat: Decodable {
-    let baseStat: Int
     let stat: Type
+    let base_stat: Int
     
     enum CondingKeys: String, CodingKey {
-        case baseStat = "base_stat"
         case stat
+        case base_stat
     }
     
 }

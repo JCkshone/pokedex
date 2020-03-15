@@ -33,24 +33,15 @@ class HttpManager {
         let request = AF.request(url)
         request.responseDecodable(of: Pokedex.self) { response in
             guard let data = response.value else {return}
-             handledResponse(data)
+            handledResponse(data)
         }
     }
     
     func getPokemonInfo(from url: String, handledResponse: @escaping (_ data: Pokemon)->()) {
         let request = AF.request(url)
         request.responseDecodable(of: Pokemon.self) { response in
-            guard let data = response.data else {return}
-            
-            do {
-                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {return}
-                print(json)
-            }
-            catch {
-                print(error.localizedDescription)
-            }
-            
-//             handledResponse(data)
+            guard let data = response.value else {return}
+            handledResponse(data)
         }
     }
     
@@ -58,7 +49,7 @@ class HttpManager {
         let request = AF.request(url)
         request.responseDecodable(of: PokedexItem.self) { response in
             guard let data = response.value else {return}
-             handledResponse(data)
+            handledResponse(data)
         }
     }
     
@@ -66,7 +57,7 @@ class HttpManager {
         let request = AF.request(url)
         request.responseDecodable(of: PokemonMove.self) { response in
             guard let data = response.value else {return}
-             handledResponse(data)
+            handledResponse(data)
         }
     }
 }

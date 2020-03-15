@@ -22,7 +22,6 @@ class MoveItemTableViewCell: UITableViewCell {
     
     var moveIcon: String = "" {
         didSet {
-            print(moveIcon)
             guard let image = UIImage(named: "ic_\(moveIcon)") else { return }
             moveBtn.setBackgroundImage(image, for: .normal)
         }
