@@ -33,23 +33,35 @@ The shell’s rounded shape and the grooves on its surface help minimize resista
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLU-0p-zNb">
-                                <rect key="frame" x="149" y="95" width="130" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mtl-CH-bHV">
+                                <rect key="frame" x="20" y="95" width="388" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xN0-16-wS0">
+                                        <rect key="frame" x="179" y="15" width="30" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWd-io-ogl">
+                                        <rect key="frame" x="179" y="15" width="30" height="30"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Upw-Sh-zhj"/>
-                                    <constraint firstAttribute="height" constant="60" id="hVC-Bk-gXV"/>
+                                    <constraint firstItem="xN0-16-wS0" firstAttribute="centerX" secondItem="mtl-CH-bHV" secondAttribute="centerX" id="FZa-9U-nka"/>
+                                    <constraint firstItem="jWd-io-ogl" firstAttribute="centerX" secondItem="mtl-CH-bHV" secondAttribute="centerX" id="HKf-j2-kNx"/>
+                                    <constraint firstItem="jWd-io-ogl" firstAttribute="centerY" secondItem="mtl-CH-bHV" secondAttribute="centerY" id="IJs-JV-Evh"/>
+                                    <constraint firstAttribute="height" constant="60" id="IfI-DG-5Ub"/>
+                                    <constraint firstItem="xN0-16-wS0" firstAttribute="centerY" secondItem="mtl-CH-bHV" secondAttribute="centerY" id="QF1-JG-K3K"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="ic_tag_water"/>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="mLU-0p-zNb" firstAttribute="centerX" secondItem="iuG-nT-Fun" secondAttribute="centerX" id="DDz-fM-Owe"/>
+                            <constraint firstItem="mtl-CH-bHV" firstAttribute="leading" secondItem="iuG-nT-Fun" secondAttribute="leading" constant="20" id="6UH-oh-D6w"/>
                             <constraint firstItem="tlL-W5-cg6" firstAttribute="top" secondItem="iuG-nT-Fun" secondAttribute="top" constant="40" id="ETJ-0w-mAf"/>
                             <constraint firstAttribute="trailing" secondItem="RUm-cX-XwY" secondAttribute="trailing" constant="20" id="Ebh-cK-fsu"/>
-                            <constraint firstItem="mLU-0p-zNb" firstAttribute="top" secondItem="tlL-W5-cg6" secondAttribute="bottom" id="XTS-gX-XN9"/>
+                            <constraint firstItem="mtl-CH-bHV" firstAttribute="top" secondItem="tlL-W5-cg6" secondAttribute="bottom" id="NeC-j9-cMg"/>
                             <constraint firstItem="tlL-W5-cg6" firstAttribute="leading" secondItem="iuG-nT-Fun" secondAttribute="leading" id="a2p-H2-Ya1"/>
-                            <constraint firstItem="RUm-cX-XwY" firstAttribute="top" secondItem="mLU-0p-zNb" secondAttribute="bottom" constant="16" id="acI-KV-XVh"/>
+                            <constraint firstAttribute="trailing" secondItem="mtl-CH-bHV" secondAttribute="trailing" constant="20" id="csb-S9-3GX"/>
+                            <constraint firstItem="RUm-cX-XwY" firstAttribute="top" secondItem="mtl-CH-bHV" secondAttribute="bottom" constant="16" id="lD0-HU-YwM"/>
                             <constraint firstAttribute="bottom" secondItem="RUm-cX-XwY" secondAttribute="bottom" constant="16" id="p7Q-FF-WwT"/>
                             <constraint firstAttribute="trailing" secondItem="tlL-W5-cg6" secondAttribute="trailing" id="wT9-LD-IbS"/>
                             <constraint firstItem="RUm-cX-XwY" firstAttribute="leading" secondItem="iuG-nT-Fun" secondAttribute="leading" constant="20" id="zdr-bM-pq2"/>
@@ -64,10 +76,15 @@ The shell’s rounded shape and the grooves on its surface help minimize resista
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="firstBtnConstraint" destination="FZa-9U-nka" id="nqK-LT-TZd"/>
+                <outlet property="firstType" destination="xN0-16-wS0" id="NEc-2u-oI9"/>
+                <outlet property="pokemonDescription" destination="RUm-cX-XwY" id="MPR-cC-8DM"/>
+                <outlet property="pokemonName" destination="tlL-W5-cg6" id="gxa-xe-crA"/>
+                <outlet property="secondBtnConstraint" destination="HKf-j2-kNx" id="cB0-8F-fti"/>
+                <outlet property="secondType" destination="jWd-io-ogl" id="Ovz-Sa-RMJ"/>
+            </connections>
             <point key="canvasLocation" x="215.94202898550725" y="187.83482142857142"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="ic_tag_water" width="130" height="50"/>
-    </resources>
 </document>

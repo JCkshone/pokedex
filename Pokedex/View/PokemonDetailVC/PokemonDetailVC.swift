@@ -13,11 +13,14 @@ class PokemonDetailVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pokemonImg: UIImageView!
+    private var backgroundColor: [UIColor] = []
+    private var themeColor = Themes()
     
     var pokemon: Pokemon? {
         didSet {
             initTableView()
             setPokemonImg()
+            setBackground()
         }
     }
     
@@ -65,14 +68,28 @@ class PokemonDetailVC: UIViewController {
             }
         }
     }
+    
+    func setBackground() {
+        let mirror = Mirror(reflecting: themeColor)
+        for (key, value) in mirror.children {
+            if pokemon?.types[0].type.name == key {
+                backgroundColor = value as? [UIColor] ?? []
+                break
+            }
+        }
+        self.view.setGradient(colors: backgroundColor)
+        self.loadViewIfNeeded()
+    }
 }
 
 extension PokemonDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        guard let pokemon = pokemon else { return UITableViewCell()}
         switch indexPath.row {
         case 0:
             let cell = Bundle.main.loadNibNamed(Constants.headerCellId, owner: self, options: nil)?.first as! headerCell
+            cell.name = pokemon.name
+            cell.types = pokemon.types
             return cell
         default:
             let cell = Bundle.main.loadNibNamed(Constants.bodyCellId, owner: self, options: nil)?.first as! bodyCell

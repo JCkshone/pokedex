@@ -44,7 +44,6 @@ class PokemonStackInfoTableViewCell: UITableViewCell {
         }
         
         actions[0].action.setActive(color: btnColor, radius: 23)
-        self.layoutIfNeeded()
     }
     
     @objc func actionCliked(sender: UIButton) {

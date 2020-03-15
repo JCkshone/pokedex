@@ -61,7 +61,7 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         let cell = Bundle.main.loadNibNamed(Constants.cellId, owner: self, options: nil)?.first as! PokedexItemTableViewCell
         cell.resetCell()
         cell.name = viewModel.allPokemons[indexPath.row].name
-        cell.pokemonNumber = indexPath.row
+        cell.pokemonNumber = viewModel.allPokemons[indexPath.row].id
         cell.pokemonImgUrl = HttpManager.shareInstance.getImagePokemon(of: indexPath.row + 1)
         cell.types = viewModel.allPokemons[indexPath.row].types
         return cell
@@ -117,7 +117,6 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         pokemonDetail.didMove(toParent: self)
         
         pokemonDetailView.pokemon = pokemon
-        
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             contentView.frame = self.view.frame
