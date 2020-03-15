@@ -26,7 +26,7 @@ class PokedexItemTableViewCell: UITableViewCell {
     
     var pokemonNumber: Int = 0 {
         didSet {
-            pokemonId.text = buildPokemonNumber(pokemonNumber)
+            pokemonId.text = buildPokemonNumber(pokemonNumber + 1)
         }
     }
     

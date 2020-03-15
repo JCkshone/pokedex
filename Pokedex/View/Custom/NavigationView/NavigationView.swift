@@ -11,7 +11,7 @@ import UIKit
 class NavigationView: UIView {
     
     @IBOutlet fileprivate weak var title: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet fileprivate weak var searchTextField: UITextField!
     
     var navigationTitle: String = "" {
         didSet {

@@ -1,23 +1,26 @@
 //
-//  ItemsVC.swift
+//  MovesVC.swift
 //  Pokedex
 //
-//  Created by Juan Navarro on 13/03/20.
+//  Created by Juan Navarro on 14/03/20.
 //  Copyright © 2020 Juan Navarro. All rights reserved.
 //
 
 import UIKit
 
-class ItemsVC: UIViewController {
+class MovesVC: UIViewController {
+    
     @IBOutlet weak var navigationView: NavigationView!
     @IBOutlet weak var tableView: UITableView!
-    private let viewModel = ItemVM()
+    private let viewModel = MoveVM()
     
     struct Constants {
-        static let titleView = "Items"
-        static let cellId = "ItemTableViewCell"
+        static let cellId = "MoveItemTableViewCell"
+        static let titleView = "Moves"
         static let rowHeight = CGFloat(75)
+        
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -43,16 +46,16 @@ class ItemsVC: UIViewController {
     }
 }
 
-extension ItemsVC: UITableViewDelegate, UITableViewDataSource {
+extension MovesVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = Bundle.main.loadNibNamed(Constants.cellId, owner: self, options: nil)?.first as! ItemTableViewCell
-        cell.itemImgUrl = viewModel.items[indexPath.row].sprites.imgUrl
+        let cell = Bundle.main.loadNibNamed(Constants.cellId, owner: self, options: nil)?.first as! MoveItemTableViewCell
+        cell.resetCell()
         cell.name = viewModel.items[indexPath.row].name
-        cell.currency = viewModel.items[indexPath.row].cost
+        cell.moveIcon = viewModel.items[indexPath.row].type.name
         return cell
     }
     

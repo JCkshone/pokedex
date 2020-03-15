@@ -36,7 +36,6 @@ struct PokedexItem: Decodable {
     let sprites: Sprite
     let name: String
     let cost: Int
-    
     enum CodingKeys: String, CodingKey {
         case sprites
         case name
@@ -46,7 +45,6 @@ struct PokedexItem: Decodable {
 
 struct Sprite: Decodable {
     let imgUrl: String
-    
     enum CodingKeys: String, CodingKey {
         case imgUrl = "default"
     }

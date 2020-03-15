@@ -12,9 +12,9 @@ import Kingfisher
 class ItemTableViewCell: UITableViewCell {
     
     
-    @IBOutlet weak var itemImage: UIImageView!
-    @IBOutlet weak var itemName: UILabel!
-    @IBOutlet weak var currencyItem: UILabel!
+    @IBOutlet fileprivate weak var itemImage: UIImageView!
+    @IBOutlet fileprivate weak var itemName: UILabel!
+    @IBOutlet fileprivate weak var currencyItem: UILabel!
     
     var itemImgUrl: String = "" {
         didSet {

@@ -37,3 +37,13 @@ struct Type: Decodable {
         case url
     }
 }
+
+struct PokemonMove: Decodable {
+    let name: String
+    let type: Type
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case type
+    }
+}
