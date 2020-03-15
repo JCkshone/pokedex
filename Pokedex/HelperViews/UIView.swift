@@ -29,13 +29,14 @@ extension UIView {
         return self
     }
     
-    func setGradient(colors: [UIColor]){
+    func setGradient(colors: [UIColor]) -> CAGradientLayer{
         let gradient = CAGradientLayer()
         gradient.colors = colors.map({$0.cgColor})
         gradient.startPoint = CGPoint(x: 0.0, y: 0.5)
         gradient.endPoint = CGPoint(x: 1.0, y: 0.5)
         gradient.frame = UIScreen.main.bounds
         self.layer.insertSublayer(gradient, at: 0)
+        return gradient
     }
     
     func setGradientSelectColor() {

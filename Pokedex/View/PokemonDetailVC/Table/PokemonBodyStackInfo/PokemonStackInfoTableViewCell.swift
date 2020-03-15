@@ -19,14 +19,16 @@ class PokemonStackInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var stackView: UIStackView!
     
     let options = ["STATS", "EVOLUTIONS", "MOVES"]
-    let btnColor = #colorLiteral(red: 0.3333333333, green: 0.6235294118, blue: 0.8745098039, alpha: 1)
     private var actions: [ActionCollection] = []
     
-    
+    var themeColor: UIColor = UIColor() {
+        didSet {
+            setupButtons()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupButtons()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -36,22 +38,22 @@ class PokemonStackInfoTableViewCell: UITableViewCell {
     func setupButtons() {
         
         for (key, title) in options.enumerated() {
-            let button = UIButton().setupMenuButton(textColor: btnColor, title: title)
+            let button = UIButton().setupMenuButton(textColor: themeColor, title: title)
             button.tag = key
             actions.append(ActionCollection(title: title, active: false, action: button))
             button.addTarget(self, action: #selector(actionCliked), for: .touchUpInside)
             stackView.addArrangedSubview(button)
         }
         
-        actions[0].action.setActive(color: btnColor, radius: 23)
+        actions[0].action.setActive(color: themeColor, radius: 23)
     }
     
     @objc func actionCliked(sender: UIButton) {
         for key in 0..<actions.count {
-            actions[key].action.setDesabled(textColor: btnColor)
+            actions[key].action.setDesabled(textColor: themeColor)
         }
         UIView.animate(withDuration: 0.3) {
-            self.actions[sender.tag].action.setActive(color: self.btnColor, radius: 23)
+            self.actions[sender.tag].action.setActive(color: self.themeColor, radius: 23)
             self.actions[sender.tag].active =  !self.actions[sender.tag].active
         }
     }

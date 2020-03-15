@@ -14,6 +14,7 @@ class PokedexVC: UIViewController {
     @IBOutlet weak var navigationView: NavigationView!
     private let viewModel = PokedexVM()
     private var startingFrame: CGRect?
+    private var pokemonDetailView: UIView?
     
     private var pokemonDetail: PokemonDetailVC {
         UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PokemonDetailVC") as! PokemonDetailVC
@@ -89,14 +90,14 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         itemSelect(to: viewModel.allPokemons[indexPath.row])
     }
     
-    @objc func handleRemoveView(gesture: UITapGestureRecognizer) {
+    func removeView(view: UIView) {
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
-            gesture.view?.frame = self.startingFrame ?? .zero
-            gesture.view?.layer.cornerRadius = 0
+            view.frame = self.startingFrame ?? .zero
+            view.layer.cornerRadius = 0
             self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height - 83
             self.pokemonDetail.removeFromParent()
         }, completion: { _ in
-            gesture.view?.removeFromSuperview()
+            view.removeFromSuperview()
         })
     }
     
@@ -105,7 +106,6 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
     
         let pokemonDetailView = pokemonDetail
         let contentView = pokemonDetailView.view!
-        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveView)))
         
         self.view.addSubview(contentView)
         
@@ -117,6 +117,12 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         pokemonDetail.didMove(toParent: self)
         
         pokemonDetailView.pokemon = pokemon
+        self.pokemonDetailView = contentView
+        
+        pokemonDetailView.handleDissmisView = { [weak self] in
+            guard let self = self, let view =  self.pokemonDetailView else { return }
+            self.removeView(view: view)
+        }
         
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             contentView.frame = self.view.frame

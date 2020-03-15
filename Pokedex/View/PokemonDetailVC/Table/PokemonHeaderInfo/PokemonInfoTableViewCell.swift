@@ -19,7 +19,7 @@ class PokemonInfoTableViewCell: UITableViewCell {
     
     var name: String = "" {
         didSet {
-            pokemonName.text = name
+            pokemonName.text = name.capitalized
         }
     }
     

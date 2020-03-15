@@ -15,6 +15,8 @@ class PokemonDetailVC: UIViewController {
     @IBOutlet weak var pokemonImg: UIImageView!
     private var backgroundColor: [UIColor] = []
     private var themeColor = Themes()
+    private var gradient: CAGradientLayer?
+    var handleDissmisView: (()->())?
     
     var pokemon: Pokemon? {
         didSet {
@@ -38,13 +40,19 @@ class PokemonDetailVC: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         self.willMove(toParent: nil)
         self.removeFromParent()
     }
     
     @IBAction func dismissAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: 0.3) {
+            self.gradient?.removeFromSuperlayer()
+            self.loadViewIfNeeded()
+        }
+        handleDissmisView?()
+        
     }
     
     private func initTableView() {
@@ -71,13 +79,16 @@ class PokemonDetailVC: UIViewController {
     
     func setBackground() {
         let mirror = Mirror(reflecting: themeColor)
+        
         for (key, value) in mirror.children {
-            if pokemon?.types[0].type.name == key {
+            let name = pokemon?.types.count ?? 0  > 1 ? pokemon?.types[1].type.name : pokemon?.types[0].type.name
+            
+            if name == key {
                 backgroundColor = value as? [UIColor] ?? []
                 break
             }
         }
-        self.view.setGradient(colors: backgroundColor)
+        gradient = self.view.setGradient(colors: backgroundColor)
         self.loadViewIfNeeded()
     }
 }
@@ -93,6 +104,7 @@ extension PokemonDetailVC: UITableViewDelegate, UITableViewDataSource {
             return cell
         default:
             let cell = Bundle.main.loadNibNamed(Constants.bodyCellId, owner: self, options: nil)?.first as! bodyCell
+            cell.themeColor = backgroundColor[0]
             return cell
         }
     }
