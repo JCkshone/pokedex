@@ -13,12 +13,14 @@ struct Pokemon: Decodable {
     let name: String
     let types: [PokemonType]
     let stats: [PokemonStat]
+    let abilities: [PokemonAbilities]
     
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case types
         case stats
+        case abilities
     }
 }
 
@@ -60,5 +62,14 @@ struct PokemonStat: Decodable {
         case stat
         case base_stat
     }
+}
+
+struct PokemonAbilities: Decodable {
+    let ability: Type
+    let isHidden: Bool
     
+    enum CodingKeys: String, CodingKey {
+        case ability
+        case isHidden = "is_hidden"
+    }
 }

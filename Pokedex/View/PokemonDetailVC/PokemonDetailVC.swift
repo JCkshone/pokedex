@@ -101,11 +101,13 @@ extension PokemonDetailVC: UITableViewDelegate, UITableViewDataSource {
             let cell = Bundle.main.loadNibNamed(Constants.headerCellId, owner: self, options: nil)?.first as! headerCell
             cell.name = pokemon.name
             cell.types = pokemon.types
+            cell.selectionStyle = .none
             return cell
         default:
             let cell = Bundle.main.loadNibNamed(Constants.bodyCellId, owner: self, options: nil)?.first as! bodyCell
             cell.themeColor = backgroundColor[0]
             cell.pokemon = pokemon
+            cell.selectionStyle = .none
             return cell
         }
     }
