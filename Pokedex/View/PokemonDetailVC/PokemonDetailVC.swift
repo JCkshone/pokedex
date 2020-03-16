@@ -105,6 +105,7 @@ extension PokemonDetailVC: UITableViewDelegate, UITableViewDataSource {
         default:
             let cell = Bundle.main.loadNibNamed(Constants.bodyCellId, owner: self, options: nil)?.first as! bodyCell
             cell.themeColor = backgroundColor[0]
+            cell.pokemon = pokemon
             return cell
         }
     }
@@ -114,6 +115,12 @@ extension PokemonDetailVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UITableView.automaticDimension
+        switch indexPath.row {
+        case 0:
+            return UITableView.automaticDimension
+        default:
+            return UIScreen.main.bounds.height / 2
+        }
+        
     }
 }

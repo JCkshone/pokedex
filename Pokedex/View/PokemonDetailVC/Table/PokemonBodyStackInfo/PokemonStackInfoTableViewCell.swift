@@ -15,15 +15,29 @@ struct ActionCollection {
 }
 
 class PokemonStackInfoTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     let options = ["STATS", "EVOLUTIONS", "MOVES"]
     private var actions: [ActionCollection] = []
     
+    struct Constants {
+        static let cellId = "StatsCollectionViewCell"
+        static let cellStatsId = "TableCollectionViewCell"
+        static let cellServicesApplyId = "MultiOptionSelectCollectionViewCell"
+    }
+    
     var themeColor: UIColor = UIColor() {
         didSet {
             setupButtons()
+            initCollectionView()
+        }
+    }
+    
+    var pokemon: Pokemon? = nil {
+        didSet {
+            collectionView.delegate = self
+            collectionView.dataSource = self
         }
     }
     
@@ -56,5 +70,25 @@ class PokemonStackInfoTableViewCell: UITableViewCell {
             self.actions[sender.tag].action.setActive(color: self.themeColor, radius: 23)
             self.actions[sender.tag].active =  !self.actions[sender.tag].active
         }
+    }
+    
+    private func initCollectionView() {
+        collectionView.register(UINib(nibName: Constants.cellId, bundle: nil), forCellWithReuseIdentifier: Constants.cellId)
+    }
+}
+
+extension PokemonStackInfoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView
+            .dequeueReusableCell(withReuseIdentifier: Constants.cellId, for: indexPath) as! StatsCollectionViewCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: Int(collectionView.bounds.width), height: Int(UIScreen.main.bounds.height / 2))
     }
 }
