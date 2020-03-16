@@ -35,6 +35,9 @@
                             <integer key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="change:" destination="-1" eventType="editingChanged" id="sCe-Bz-9yL"/>
+                    </connections>
                 </textField>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search" translatesAutoresizingMaskIntoConstraints="NO" id="gRs-YW-BNV">
                     <rect key="frame" x="32" y="131.5" width="20" height="16"/>

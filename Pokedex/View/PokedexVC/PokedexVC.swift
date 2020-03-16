@@ -42,6 +42,7 @@ class PokedexVC: UIViewController {
         self.tabBarController?.tabBar.addBorderView(type: .top, parentView: self.tabBarController?.tabBar ?? UIView())
         self.view.backgroundColor = .white
         tableView.keyboardDismissMode = .onDrag
+        navigationView.delegate = self
     }
     
     func setUpViewModel() {
@@ -50,6 +51,12 @@ class PokedexVC: UIViewController {
             self.tableView.reloadData()
         }
         viewModel.loadPokedexData()
+    }
+}
+
+extension PokedexVC: NavigationViewDelegate {
+    func handleChangeTextField(value: String) {
+        viewModel.filterPokedexInfo(search: value)
     }
 }
 

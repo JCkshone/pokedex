@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol NavigationViewDelegate {
+    func handleChangeTextField(value: String)
+}
+
 class NavigationView: UIView {
     
     @IBOutlet fileprivate weak var title: UILabel!
     @IBOutlet fileprivate weak var searchTextField: UITextField!
+    
+    var delegate: NavigationViewDelegate?
     
     var navigationTitle: String = "" {
         didSet {
@@ -22,19 +28,23 @@ class NavigationView: UIView {
     struct Constants {
         static let xibName = "NavigationView"
     }
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadViewFromNib()
         setupView()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         loadViewFromNib()
         setupView()
     }
-
+    
+    @IBAction func change(_ sender: Any) {
+        delegate?.handleChangeTextField(value:searchTextField.text ?? "")
+    }
+    
     func loadViewFromNib() {
         let bundle = Bundle.init(for: NavigationView.self)
         if let viewsToAdd = bundle.loadNibNamed(Constants.xibName, owner: self, options: nil), let contentView = viewsToAdd.first as? UIView {
