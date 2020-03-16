@@ -10,12 +10,12 @@ import UIKit
 
 class PokemonStats: UIView {
     
-    @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var typeValue: UILabel!
-    @IBOutlet weak var loader: HorizontalLoader!
+    @IBOutlet fileprivate weak var type: UILabel!
+    @IBOutlet fileprivate weak var typeValue: UILabel!
+    @IBOutlet fileprivate weak var loader: HorizontalLoader!
     
     struct Constants {
-        static let xibName = "PokemonStatView"
+        static let xibName = "PokemonStats"
     }
     
     var statColor: UIColor = UIColor() {

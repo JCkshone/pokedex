@@ -16,20 +16,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="336" height="231"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XHb-ot-zcD">
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dQl-Kk-PZ6">
                         <rect key="frame" x="1" y="1" width="334" height="229"/>
-                    </stackView>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </tableView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="XHb-ot-zcD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="2vE-oE-zbi"/>
-                    <constraint firstItem="XHb-ot-zcD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="4iK-UM-Lfz"/>
-                    <constraint firstAttribute="bottom" secondItem="XHb-ot-zcD" secondAttribute="bottom" constant="1" id="KFz-IE-PB3"/>
-                    <constraint firstAttribute="trailing" secondItem="XHb-ot-zcD" secondAttribute="trailing" constant="1" id="RoF-aT-n10"/>
+                    <constraint firstAttribute="bottom" secondItem="dQl-Kk-PZ6" secondAttribute="bottom" constant="1" id="T5f-ql-Ft4"/>
+                    <constraint firstItem="dQl-Kk-PZ6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="1" id="UIN-Vy-7aG"/>
+                    <constraint firstAttribute="trailing" secondItem="dQl-Kk-PZ6" secondAttribute="trailing" constant="1" id="aXq-lf-vvC"/>
+                    <constraint firstItem="dQl-Kk-PZ6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="1" id="cAM-tk-iSZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="rootContentStats" destination="XHb-ot-zcD" id="35d-Rt-WBc"/>
+                <outlet property="tableView" destination="dQl-Kk-PZ6" id="EOz-Wr-TWP"/>
             </connections>
             <point key="canvasLocation" x="149.27536231884059" y="162.38839285714286"/>
         </tableViewCell>

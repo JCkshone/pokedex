@@ -54,6 +54,9 @@
 		937B723B241EA184007E8F7F /* PokemonDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B723A241EA184007E8F7F /* PokemonDetailVM.swift */; };
 		937B7245241F1173007E8F7F /* StatsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B7243241F1173007E8F7F /* StatsCollectionViewCell.swift */; };
 		937B7246241F1173007E8F7F /* StatsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937B7244241F1173007E8F7F /* StatsCollectionViewCell.xib */; };
+		937B7249241F3892007E8F7F /* PokemonStatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B7247241F3892007E8F7F /* PokemonStatTableViewCell.swift */; };
+		937B724A241F3892007E8F7F /* PokemonStatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 937B7248241F3892007E8F7F /* PokemonStatTableViewCell.xib */; };
+		937B724C241F61B7007E8F7F /* UIProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937B724B241F61B7007E8F7F /* UIProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +132,9 @@
 		937B723A241EA184007E8F7F /* PokemonDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailVM.swift; sourceTree = "<group>"; };
 		937B7243241F1173007E8F7F /* StatsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsCollectionViewCell.swift; sourceTree = "<group>"; };
 		937B7244241F1173007E8F7F /* StatsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatsCollectionViewCell.xib; sourceTree = "<group>"; };
+		937B7247241F3892007E8F7F /* PokemonStatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonStatTableViewCell.swift; sourceTree = "<group>"; };
+		937B7248241F3892007E8F7F /* PokemonStatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonStatTableViewCell.xib; sourceTree = "<group>"; };
+		937B724B241F61B7007E8F7F /* UIProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressView.swift; sourceTree = "<group>"; };
 		951B9A9545CCBD307C422D5D /* Pods-PokedexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexTests.release.xcconfig"; path = "Target Support Files/Pods-PokedexTests/Pods-PokedexTests.release.xcconfig"; sourceTree = "<group>"; };
 		9917DA73D7C1CBCF458B7CFF /* Pods-Pokedex-PokedexUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex-PokedexUITests.release.xcconfig"; path = "Target Support Files/Pods-Pokedex-PokedexUITests/Pods-Pokedex-PokedexUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B46AF9D3C7ACECB5823EE688 /* Pods-Pokedex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex/Pods-Pokedex.debug.xcconfig"; sourceTree = "<group>"; };
@@ -308,6 +314,7 @@
 				93556AC5241C5126005D82DA /* UITextField.swift */,
 				937B7213241E6F02007E8F7F /* UIButton.swift */,
 				937B7215241E7A33007E8F7F /* UIControl.swift */,
+				937B724B241F61B7007E8F7F /* UIProgressView.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -411,6 +418,8 @@
 			children = (
 				937B721F241E92AD007E8F7F /* StatsTableViewCell.swift */,
 				937B7220241E92AD007E8F7F /* StatsTableViewCell.xib */,
+				937B7247241F3892007E8F7F /* PokemonStatTableViewCell.swift */,
+				937B7248241F3892007E8F7F /* PokemonStatTableViewCell.xib */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -570,6 +579,7 @@
 				937B721B241E7C8A007E8F7F /* ActionButton.xib in Resources */,
 				93556AB4241C1D8A005D82DA /* NavigationView.xib in Resources */,
 				937B720E241E5981007E8F7F /* PokemonStackInfoTableViewCell.xib in Resources */,
+				937B724A241F3892007E8F7F /* PokemonStatTableViewCell.xib in Resources */,
 				93556A7F241C06A8005D82DA /* Main.storyboard in Resources */,
 				937B720A241E58B8007E8F7F /* PokemonInfoTableViewCell.xib in Resources */,
 				937B71F1241CD575007E8F7F /* ItemTableViewCell.xib in Resources */,
@@ -709,6 +719,7 @@
 				937B720D241E5981007E8F7F /* PokemonStackInfoTableViewCell.swift in Sources */,
 				937B7216241E7A33007E8F7F /* UIControl.swift in Sources */,
 				937B7245241F1173007E8F7F /* StatsCollectionViewCell.swift in Sources */,
+				937B7249241F3892007E8F7F /* PokemonStatTableViewCell.swift in Sources */,
 				937B71F9241D65A6007E8F7F /* MovesVC.swift in Sources */,
 				93556AC4241C50ED005D82DA /* UIView.swift in Sources */,
 				93556ABB241C48DB005D82DA /* HttpManager.swift in Sources */,
@@ -728,6 +739,7 @@
 				937B7219241E7C69007E8F7F /* ActionButton.swift in Sources */,
 				937B7205241D8443007E8F7F /* PokemonDetailVC.swift in Sources */,
 				93556A7A241C06A8005D82DA /* SceneDelegate.swift in Sources */,
+				937B724C241F61B7007E8F7F /* UIProgressView.swift in Sources */,
 				937B71F5241CE254007E8F7F /* ItemVM.swift in Sources */,
 				937B7209241E58B8007E8F7F /* PokemonInfoTableViewCell.swift in Sources */,
 			);

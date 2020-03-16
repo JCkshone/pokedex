@@ -85,10 +85,12 @@ extension PokemonStackInfoTableViewCell: UICollectionViewDelegate, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView
             .dequeueReusableCell(withReuseIdentifier: Constants.cellId, for: indexPath) as! StatsCollectionViewCell
+        cell.themeColor = themeColor
+        cell.pokemon = pokemon
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: Int(collectionView.bounds.width), height: Int(UIScreen.main.bounds.height / 2))
+        CGSize(width: Int(UIScreen.main.bounds.width), height: Int(UIScreen.main.bounds.height))
     }
 }

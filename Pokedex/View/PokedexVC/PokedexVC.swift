@@ -97,7 +97,8 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
             self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height - 83
             self.pokemonDetail.removeFromParent()
         }, completion: { _ in
-            view.removeFromSuperview()
+            guard let pokemonDetailView = self.pokemonDetailView else { return }
+            pokemonDetailView.removeFromSuperview()
         })
     }
     

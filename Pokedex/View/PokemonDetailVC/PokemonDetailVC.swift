@@ -119,7 +119,7 @@ extension PokemonDetailVC: UITableViewDelegate, UITableViewDataSource {
         case 0:
             return UITableView.automaticDimension
         default:
-            return UIScreen.main.bounds.height / 2
+            return UIScreen.main.bounds.height
         }
         
     }

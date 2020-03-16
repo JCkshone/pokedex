@@ -9,18 +9,50 @@
 import UIKit
 
 class StatsTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var rootContentStats: UIStackView!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var stats: [PokemonStat] = [] {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+    }
+    
+    var themeColor: UIColor?
+    
+    struct Constants {
+        static let cellId = "PokemonStatTableViewCell"
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        tableView.separatorStyle = .none
     }
     
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+}
+
+extension StatsTableViewCell: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        stats.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let themeColor = themeColor else { return UITableViewCell()}
+        
+        let cell = Bundle.main.loadNibNamed(Constants.cellId, owner: self, options: nil)?.first as! PokemonStatTableViewCell
+        
+        cell.name = stats[indexPath.row].stat.name
+        cell.number = indexPath.row + 1
+        cell.selectionStyle = .none
+        cell.themeColor = themeColor
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        50
+    }
 }

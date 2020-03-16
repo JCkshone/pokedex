@@ -16,7 +16,7 @@ class HorizontalLoader: UIView {
     
     @IBOutlet weak var rootContent: UIView!
     
-    private var progress = Progress(totalUnitCount: 5)
+    private var progress = Progress(totalUnitCount: 100)
     private var timerStep = 0.5
     private var timerRepeat = 1
     private var progressView = UIProgressView(progressViewStyle: .default)
@@ -54,6 +54,10 @@ class HorizontalLoader: UIView {
     }
     
     fileprivate func setupLoader() {
+//        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20))
+//        view.backgroundColor = .green
+//        view.addSubview(setupLoaderStyle())
+//        rootContent.addSubview(view)
         rootContent.addSubview(setupLoaderStyle())
     }
     
@@ -61,7 +65,9 @@ class HorizontalLoader: UIView {
         progressView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 4)
         progressView.clipsToBounds = true
         progressView.progressTintColor = loaderColor
-        progressView.transform = CGAffineTransform(scaleX: 1, y: 2)
+//        progressView.transform = CGAffineTransform(scaleX: 5, y: 4)
+//        progressView.frame = CGRect(x: 0, y: 20, width: 200, height: 50)
+        progressView.backgroundColor = .blue
         return progressView
     }
     
