@@ -13,6 +13,12 @@ class MovesVC: UIViewController {
     @IBOutlet weak var navigationView: NavigationView!
     @IBOutlet weak var tableView: UITableView!
     private let viewModel = MoveVM()
+    private var startingFrame: CGRect?
+    private var moveDetailView: UIView?
+    
+    private var moveDetailVC: MovesDetailVC {
+        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MovesDetailVC") as! MovesDetailVC
+    }
     
     struct Constants {
         static let cellId = "MoveItemTableViewCell"
@@ -65,6 +71,36 @@ extension MovesVC: UITableViewDataSource, UITableViewDelegate {
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         viewModel.loadPokedexData(isFirstRequest: false)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) else {return}
+        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else {return}
+        self.startingFrame = startingFrame
+        itemSelect()
+    }
+    
+    func itemSelect() {
+        guard let startingFrame = self.startingFrame else {return}
+        
+        let pokemonDetailView = moveDetailVC
+        let contentView = pokemonDetailView.view!
+        
+        self.view.addSubview(contentView)
+        
+        contentView.frame = startingFrame
+        contentView.layer.cornerRadius = 16
+        
+        addChild(pokemonDetailView)
+        moveDetailVC.willMove(toParent: self)
+        moveDetailVC.didMove(toParent: self)
+
+        self.moveDetailView = contentView
+        
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
+            contentView.frame = self.view.frame
+            self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height+100
+        }, completion: nil)
     }
     
 }

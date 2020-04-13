@@ -16,10 +16,9 @@ class PokedexVC: UIViewController {
     private var startingFrame: CGRect?
     private var pokemonDetailView: UIView?
     
-    private var pokemonDetail: PokemonDetailVC {
+    private var pokemonDetailVC: PokemonDetailVC {
         UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PokemonDetailVC") as! PokemonDetailVC
     }
-    
     
     struct Constants {
         static let cellId = "PokedexItemTableViewCell"
@@ -52,6 +51,19 @@ class PokedexVC: UIViewController {
         }
         viewModel.loadPokedexData()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let headerView = tableView.tableHeaderView {
+            let height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
+            var headerFrame = headerView.frame
+            if height != headerFrame.size.height {
+                headerFrame.size.height = height
+                headerView.frame = headerFrame
+                tableView.tableHeaderView = headerView
+            }
+        }
+    }
 }
 
 extension PokedexVC: NavigationViewDelegate {
@@ -61,6 +73,7 @@ extension PokedexVC: NavigationViewDelegate {
 }
 
 extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.allPokemons.count
     }
@@ -84,7 +97,7 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         
+        
         guard let cell = tableView.cellForRow(at: indexPath) else {
             return
         }
@@ -102,7 +115,7 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
             view.frame = self.startingFrame ?? .zero
             view.layer.cornerRadius = 0
             self.tabBarController?.tabBar.frame.origin.y = self.view.frame.height - 83
-            self.pokemonDetail.removeFromParent()
+            self.pokemonDetailVC.removeFromParent()
         }, completion: { _ in
             guard let pokemonDetailView = self.pokemonDetailView else { return }
             pokemonDetailView.removeFromSuperview()
@@ -111,8 +124,8 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
     
     func itemSelect(to pokemon: Pokemon) {
         guard let startingFrame = self.startingFrame else {return}
-    
-        let pokemonDetailView = pokemonDetail
+        
+        let pokemonDetailView = pokemonDetailVC
         let contentView = pokemonDetailView.view!
         
         self.view.addSubview(contentView)
@@ -121,8 +134,8 @@ extension PokedexVC: UITableViewDelegate, UITableViewDataSource {
         contentView.layer.cornerRadius = 16
         
         addChild(pokemonDetailView)
-        pokemonDetail.willMove(toParent: self)
-        pokemonDetail.didMove(toParent: self)
+        pokemonDetailVC.willMove(toParent: self)
+        pokemonDetailVC.didMove(toParent: self)
         
         pokemonDetailView.pokemon = pokemon
         self.pokemonDetailView = contentView

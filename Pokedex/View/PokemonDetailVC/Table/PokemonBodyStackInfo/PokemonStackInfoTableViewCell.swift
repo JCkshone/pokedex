@@ -19,6 +19,7 @@ class PokemonStackInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let options = ["STATS", "EVOLUTIONS", "MOVES"]
+    private var indexStat = 0
     private var actions: [ActionCollection] = []
     
     struct Constants {
@@ -70,6 +71,9 @@ class PokemonStackInfoTableViewCell: UITableViewCell {
             self.actions[sender.tag].action.setActive(color: self.themeColor, radius: 23)
             self.actions[sender.tag].active =  !self.actions[sender.tag].active
         }
+        let position = indexStat == sender.tag ?  UICollectionView.ScrollPosition.top : sender.tag >  indexStat ? UICollectionView.ScrollPosition.right : UICollectionView.ScrollPosition.left
+        collectionView.scrollToItem(at: IndexPath(row: sender.tag, section: 0), at: position, animated: true)
+        indexStat = sender.tag
     }
     
     private func initCollectionView() {
@@ -79,7 +83,7 @@ class PokemonStackInfoTableViewCell: UITableViewCell {
 
 extension PokemonStackInfoTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

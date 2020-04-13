@@ -53,6 +53,44 @@
             </objects>
             <point key="canvasLocation" x="-1270" y="-145"/>
         </scene>
+        <!--Moves DetailVC-->
+        <scene sceneID="eNf-43-c6T">
+            <objects>
+                <viewController storyboardIdentifier="MovesDetailVC" id="tcE-TL-AwL" customClass="MovesDetailVC" customModule="Pokedex" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hpc-qm-G7N">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faL-jz-c26">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tcE-TL-AwL" id="aN0-wL-azC"/>
+                                    <outlet property="delegate" destination="tcE-TL-AwL" id="knE-O4-gGD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="faL-jz-c26" firstAttribute="top" secondItem="Up7-Gg-N7l" secondAttribute="top" id="584-EH-CfP"/>
+                            <constraint firstItem="Up7-Gg-N7l" firstAttribute="trailing" secondItem="faL-jz-c26" secondAttribute="trailing" id="5NW-fd-AXZ"/>
+                            <constraint firstItem="faL-jz-c26" firstAttribute="leading" secondItem="hpc-qm-G7N" secondAttribute="leading" id="R57-pL-h3g"/>
+                            <constraint firstItem="Up7-Gg-N7l" firstAttribute="bottom" secondItem="faL-jz-c26" secondAttribute="bottom" id="aqQ-HV-LL0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Up7-Gg-N7l"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="faL-jz-c26" id="yu9-Pl-eZo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Bc-ue-CGX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92.753623188405811" y="-38.169642857142854"/>
+        </scene>
         <!--Pokedex-->
         <scene sceneID="Rqy-bL-GjK">
             <objects>

@@ -108,6 +108,7 @@ extension PokemonDetailVC: UITableViewDelegate, UITableViewDataSource {
             cell.themeColor = backgroundColor[0]
             cell.pokemon = pokemon
             cell.selectionStyle = .none
+            cell.backgroundColor = .red
             return cell
         }
     }

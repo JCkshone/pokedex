@@ -13,8 +13,12 @@ class StatsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var tableView: UITableView!
     
+    typealias abilitiesCell = PokemonAbilitiesTableViewCell
+    typealias statsCell = StatsTableViewCell
+    
     struct Constants {
         static let statsCellId = "StatsTableViewCell"
+        static let abilitiesId = "PokemonAbilitiesTableViewCell"
     }
     var pokemon: Pokemon? = nil {
         didSet {
@@ -39,19 +43,40 @@ class StatsCollectionViewCell: UICollectionViewCell {
 
 extension StatsCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let pokemon = pokemon else { return UITableViewCell() }
-        let cell = Bundle.main.loadNibNamed(Constants.statsCellId, owner: self, options: nil)?.first as! StatsTableViewCell
-        cell.themeColor = themeColor
-        cell.stats = pokemon.stats
-        cell.selectionStyle = .none
-        return cell
+        
+        switch indexPath.row {
+        case 0:
+            let cell = Bundle.main.loadNibNamed(Constants.statsCellId, owner: self, options: nil)?.first as! statsCell
+            cell.themeColor = themeColor
+            cell.stats = pokemon.stats
+            cell.selectionStyle = .none
+            return cell
+        case 1:
+            let cell = Bundle.main.loadNibNamed(Constants.abilitiesId, owner: self, options: nil)?.first as! abilitiesCell
+            cell.abilities = pokemon.abilities
+            cell.selectionStyle = .none
+            return cell
+        default:
+            let cell = Bundle.main.loadNibNamed(Constants.statsCellId, owner: self, options: nil)?.first as! StatsTableViewCell
+            cell.themeColor = themeColor
+            cell.stats = pokemon.stats
+            cell.selectionStyle = .none
+            return cell
+        }
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        350
+        switch indexPath.row {
+        case 0:
+            return 350
+        default:
+           return UIScreen.main.bounds.height
+        }
     }
 }
